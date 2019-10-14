@@ -6,8 +6,8 @@
 }
 
 body {
-  background-color: #fc0000;
-  background-image: url('https://raw.githubusercontent.com/mmarydom/gl-tchintherout-ne.github.io/master/giphy.gif');
+  background-color: #ffedf8;
+  background-image: url('https://raw.githubusercontent.com/mmarydom/interactive-video.github.io/master/polka.jpg');
   background-size: cover;
   background-repeat: no-repeat;
 
@@ -18,7 +18,7 @@ body {
   margin:0;
   font-size:15pt;
   font-family: 'Mitr', sans-serif;
-  color: #000000
+  color: #043077
 
 }
 
@@ -43,7 +43,7 @@ body {
 
 .links a {
     color: 043077;
-    background: #000000;
+    background: #ff006e;
     padding: 0px;
 }
 
@@ -60,7 +60,7 @@ h1 {
 /* Style the top navigation bar */
 .navbar {
   overflow: hidden; /* Hide overflow */
-  background-color: #595959; /* Dark background color */
+  background-color: #fff06d; /* Dark background color */
 }
 
 /* Style the navigation bar links */
@@ -80,7 +80,7 @@ h1 {
 
 /* Change color on hover/mouse-over */
 .navbar a:hover {
-  background-color: #FFFFFF; /* Grey background color */
+  background-color: #ff99ca; /* Grey background color */
   color: black; /* Black text color */
 }
 
@@ -100,7 +100,7 @@ h1 {
 /* Sidebar/left column */
 .side {
   flex: 30%; /* Set the width of the sidebar */
-  background-color: #00fc0d; /* Grey background color */
+  background-color: #ffc6e1; /* Grey background color */
   padding: 20px; /* Some padding */
   opacity: 0.6
 }
@@ -110,6 +110,6 @@ h1 {
   flex: 70%; /* Set the width of the main content */
   background-color: white; /* White background color */
   padding: 20px; /* Some padding */
-  opacity: 0.6
+  opacity: 100%
 
 }
