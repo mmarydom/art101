@@ -14,7 +14,7 @@ body {
 
   font-size:15pt;
   font-family: 'Mitr', sans-serif;
-  color: #043077;
+  color: #ffaa00;
 }
 
 canvas
@@ -30,13 +30,13 @@ canvas
   max-width: 960px;
   min-width: 500px;
 
-  background-color:#e3e3e3;
+  background-color:#fdffdb;
   border-radius: 15px 15px 15px 15px;
 }
 
 .bodyheader
 {
-  background-color: #a80000;
+  background-color: #ff7575;
   left: 0;
   top: 0;
   right: 0;
