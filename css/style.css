@@ -1,115 +1,236 @@
-@import url('https://fonts.googleapis.com/css?family=Mitr');
-
-  *{
-  margin:0;
-  padding:0;
-}
-
 body {
   background-color: #ffedf8;
-  background-image: url('https://raw.githubusercontent.com/mmarydom/website.github.io/master/polka.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-
-
+  background-image: url('https://raw.githubusercontent.com/mmarydom/cyanide/master/images/wallpaper.jpg');
+  background-size: 50%;
+  background-repeat: repeat;
 
   height: 100vh;
   padding:0;
-  margin:0;
+  margin: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 960px;
+  min-width: 500px;
+
   font-size:15pt;
   font-family: 'Mitr', sans-serif;
-  color: #043077
+  color: #043077;
+}
+
+canvas
+{
+  position:fixed; left:0; top:0; z-index:-1;
+}
+
+.mainbody
+{
+  margin: auto;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  max-width: 960px;
+  min-width: 500px;
+
+  background-color:#e3e3e3;
+  border-radius: 15px 15px 15px 15px;
+}
+
+.bodyheader
+{
+  background-color: #a80000;
+  left: 0;
+  top: 0;
+  right: 0;
+  padding: 0px 0px 0px 200px;
+  border-radius: 15px 15px 0px 0px;
+}
+
+.bodyheader h2
+{
+    color: white;
 
 }
 
-#animation {
-  width:100vw;
-  height:100vh;
-  border: none;
-  position: fixed;
-  z-index: -999;
+
+.container
+{
+  max-width: 640px;
+  padding: 0;
+  margin: 0;
+  height: 60px;
+  position: relative;
 }
 
-.links{
-  float: left;
-  font-size: 25pt;
-  list-style-type: none;
-  margin-right: 0 auto;
-  text-align: center;
+.profilepic
+{
+  display: block;
+  top: 0;
+  left: 0;
   position: absolute;
-  left:330px;
-  top:290px;
 }
 
-.links a {
-    color: 043077;
-    background: #ff006e;
-    padding: 0px;
+.bodyheader,.links, .sublinks
+{
+  overflow: hidden; /*hide content that doesn't fit*/
+  position: relative; /* stays with the flow of doc */
 }
 
-h1 {
-   font-size:20pt;
- }
- h2 {
-   font-size:25pt;
- }
- h3 {
-   font-size:30pt;
+.links
+{
+  line-height: 40px;
+  display: block;
+  padding: 10px;
+  margin: 0 60px; /*not working? */
+  color: white;
 }
+.sublinks
+{
+  line-height: 10px;
+  display: block;
+  padding: 10px;
+  margin: 0 60px; /*not working? */
+  color: white;
 
-/* Style the top navigation bar */
-.navbar {
-  overflow: hidden; /* Hide overflow */
-  background-color: #fff06d; /* Dark background color */
-}
 
-/* Style the navigation bar links */
-.navbar a {
-  float: left; /* Make sure that the links stay side-by-side */
-  display: block; /* Change the display to block, for responsive reasons (see below) */
-  color: white; /* White text color */
-  text-align: center; /* Center the text */
-  padding: 14px 20px; /* Add some padding */
-  text-decoration: none; /* Remove underline */
-}
-
-/* Right-aligned link */
-.navbar a.right {
-  float: right; /* Float a link to the right */
-}
-
-/* Change color on hover/mouse-over */
-.navbar a:hover {
-  background-color: #ff99ca; /* Grey background color */
-  color: black; /* Black text color */
 }
 
 
-/* Ensure proper sizing */
-* {
-  box-sizing: border-box;
-}
-
-/* Column container */
-.row {
+.links > ul, .sublinks > ul
+{
   display: flex;
-  flex-wrap: wrap;
 }
 
-/* Create two unequal columns that sits next to each other */
-/* Sidebar/left column */
-.side {
-  flex: 30%; /* Set the width of the sidebar */
-  background-color: #ffc6e1; /* Grey background color */
-  padding: 20px; /* Some padding */
-  opacity: 0.6
+.links > ul li, .sublinks > ul li
+{
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
 }
 
-/* Main column */
-.main {
-  flex: 70%; /* Set the width of the main content */
-  background-color: white; /* White background color */
-  padding: 20px; /* Some padding */
-  opacity: 1.0
 
+ul, li
+{
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 0;
+
+}
+
+a {
+    color: inherit; /* get color from parent */
+    text-decoration: none; /* remove underline */
+}
+
+
+.content
+{
+  padding: 20px;
+  min-height: 600px;
+}
+
+.content.grid
+{
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 60% 40%;
+}
+
+.description
+{
+  text-align: center;
+  margin: auto auto 60px auto;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.description p
+{
+  width: 80%;
+  text-align: left;
+  margin: 0 auto 10px auto;
+  line-height:20px;
+  font-size: 18px;
+
+}
+
+.description.grid
+{
+  grid-column: 1;
+  text-align: left;
+  padding: 0px 20px;
+  margin: 0;
+}
+
+.description.grid h2
+{
+  margin-top: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.description.grid p
+{
+  width: 100%;
+}
+
+.workcited p
+{
+  color: #383838;
+  font-size: 12px;
+}
+
+.image
+{
+  overflow: hidden;
+}
+
+.image.grid img
+{
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.image.rowgallery
+{
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  /* display: inline; */
+
+}
+
+.image.rowgallery img
+{
+  height: 100%;
+}
+
+.image.grid
+{
+  grid-column: 2;
+}
+
+/* make sketchfab iframe fit correctly  */
+.sketchfab
+{
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+
+}
+
+.sketchfab iframe
+{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+}
+
+.divcanvas
+{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
 }
