@@ -1,0 +1,268 @@
+
+int counter = -45;
+int counter1 = 45;
+int tCounter = 0;
+
+void setup() {
+
+  size(650,650);
+  rectMode(CENTER);
+
+  stroke(45, 255, 38);
+  
+
+}
+
+
+void draw() {
+  
+  dots();
+  
+  pushMatrix(); 
+  translate(width/2, height/2);
+  rotate(radians(counter));
+  scale(.30);
+  
+  ear(50,0);
+  ear(-50,0);
+  
+  head();
+  
+  nose(0, 40);
+  
+  eyes(50,-20,true);
+  
+  innerear(50,0);
+
+  eyes(-50,-20,false);
+  
+  innerear(-50,0);
+  
+  popMatrix();
+  
+   pushMatrix();
+   // orgin of  moveX, moveY
+   translate(width/2, height/2);
+   rotate(radians(counter1));
+   //rotate(radians(45));
+   scale(1.0);
+   // the first hat
+   rect(0, 0, 70, 20, 5);
+   // pushing it over to the right and up
+   translate(0, 0);
+   rect(0, 0, 20, 70, 5);      
+ popMatrix();
+ 
+ pushMatrix();
+   // orgin of  moveX, moveY
+   translate(width/2 + 200 , height/2 + 200);
+   rotate(radians(counter));
+   //rotate(radians(45));
+   scale(.60);
+   // the first hat
+   rect(0, 0, 70, 20, 5);
+   // pushing it over to the right and up
+   translate(0, 0);
+   rect(0, 0, 20, 70, 5);      
+ popMatrix();
+ 
+  pushMatrix();
+   // orgin of  moveX, moveY
+   translate(width/2 - 200 , height/2 - 200);
+   rotate(radians(counter));
+   //rotate(radians(45));
+   scale(.60);
+   // the first hat
+   rect(0, 0, 70, 20, 5);
+   // pushing it over to the right and up
+   translate(0, 0);
+   rect(0, 0, 20, 70, 5);      
+ popMatrix();
+ 
+  pushMatrix();
+   // orgin of  moveX, moveY
+   translate(width/2 + 200 , height/2 - 200);
+   rotate(radians(counter));
+   //rotate(radians(45));
+   scale(.60);
+   // the first hat
+   rect(0, 0, 70, 20, 5);
+   // pushing it over to the right and up
+   translate(0, 0);
+   rect(0, 0, 20, 70, 5);      
+ popMatrix();
+ 
+  pushMatrix();
+   // orgin of  moveX, moveY
+   translate(width/2 - 200 , height/2 + 200);
+   rotate(radians(counter));
+   //rotate(radians(45));
+   scale(.60);
+   // the first hat
+   rect(0, 0, 70, 20, 5);
+   // pushing it over to the right and up
+   translate(0, 0);
+   rect(0, 0, 20, 70, 5);      
+ popMatrix();
+ 
+ 
+ pushMatrix(); 
+  translate(width/2 + 200, height/2 + 200);
+  rotate(radians(counter1));
+  scale(.20);
+  
+  bearEar(60,0);
+  bearEar(-60,0);
+  
+  bearHead();
+  
+  bearNose(0, 10);
+  
+  bearEyes(50,-20);
+  bearEyes(-50,-20);
+  
+  popMatrix();
+  
+  pushMatrix(); 
+  translate(width/2 + -200, height/2 + -200);
+  rotate(radians(counter1));
+  scale(.20);
+  
+  bearEar(60,0);
+  bearEar(-60,0);
+  
+  bearHead();
+  
+  bearNose(0, 10);
+  
+  bearEyes(50,-20);
+  bearEyes(-50,-20);
+  
+  popMatrix();
+  
+  pushMatrix(); 
+  translate(width/2 - 200, height/2 + 200);
+  rotate(radians(counter1));
+  scale(.20);
+  
+  bearEar(60,0);
+  bearEar(-60,0);
+  
+  bearHead();
+  
+  bearNose(0, 10);
+  
+  bearEyes(50,-20);
+  bearEyes(-50,-20);
+  
+  popMatrix();
+  
+  pushMatrix(); 
+  translate(width/2 + 200, height/2 - 200);
+  rotate(radians(counter1));
+  scale(.20);
+  
+  bearEar(60,0);
+  bearEar(-60,0);
+  
+  bearHead();
+  
+  bearNose(0, 10);
+  
+  bearEyes(50,-20);
+  bearEyes(-50,-20);
+  
+  popMatrix();
+  
+ counter1++;
+ counter--;
+
+    
+//    if (frameCount < 300) {
+//  saveFrame("images/mover-#####.png");
+//} else {
+//exit();
+//}
+
+  tCounter ++;
+  if (tCounter > width) {
+    tCounter = -50;
+  }
+  
+}
+
+
+void eyes(int xpos, int ypos, boolean kol ) {
+
+  if (kol) {
+    fill(0, 255, 255);
+
+  } else {
+     fill(255, 0,0);
+  }
+
+  rect(width/2+xpos,height/2 + ypos,30,80);
+
+}
+
+
+void ear(int xpos,int ypos) {
+  fill(255);
+  rect(width/2 + xpos, height/2+ -140 + ypos, 70,150);
+}
+
+void innerear(int xpos,int ypos) {
+  fill(255, 43, 121);
+  rect(width/2+xpos,height/2 - 140 + ypos,27,80);
+}
+
+void nose(int xpos, int ypos){
+  fill(255, 43, 121);
+  rect(width/2 + xpos, height/2 + ypos, 40, 20);
+}
+
+
+void head(){
+fill(255);
+
+rect(width/2, height/2, 200,200);
+}
+
+void bearEyes(int xpos, int ypos) {
+     fill(255, 0,0);
+
+  ellipse(width/2+xpos,height/2 + ypos,30,30);
+
+}
+
+
+void bearEar(int xpos,int ypos) {
+  fill(0);
+  ellipse(width/2 + xpos, height/2+ -100 + ypos, 70,70);
+}
+
+void bearNose(int xpos, int ypos){
+  fill(255, 43, 121);
+  ellipse(width/2 + xpos, height/2 + ypos, 40, 20);
+}
+
+
+void bearHead(){
+fill(0);
+
+ellipse(width/2, height/2, 200,200);
+}
+
+void dots() {
+  float r = random(100);
+  for (int i = 0; i < r; i++) {
+    fill(random(255), random(255), random(255));
+    ellipse(random(width), random(height), r+10, r+10);
+  }
+
+    if ( frameCount < 400 ) { 
+      saveFrame("images/gridt1-######.png");   
+    } else {     
+      exit();
+    }
+  }

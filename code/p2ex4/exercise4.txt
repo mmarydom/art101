@@ -1,0 +1,155 @@
+int count = 20;
+float[] posX = new float[count];
+float[] posX1 = new float[count];
+float[] posY = new float[count];
+float[] posY1 = new float[count];
+float[] speedX = new float[count];
+float[] speedX1 = new float[count];
+float[] speedY = new float[count];
+float[] speedY1 = new float[count];
+float[] sizeW = new float[count];
+float[] sizeH = new float[count];
+int count1 = 100;
+float[] posXX = new float[count1];
+float[] posXX1 = new float[count1];
+float[] posYY = new float[count1];
+float[] posYY1 = new float[count1];
+float[] speedXX = new float[count1];
+float[] speedXX1 = new float[count1];
+float[] speedYY = new float[count1];
+float[] speedYY1 = new float[count1];
+float[] sizeW2 = new float[count1];
+float[] sizeH2 = new float[count1];
+
+int[] colorsH = new int[count1];
+int[] colorsS = new int[count1];
+int[] colorsB = new int[count1];
+int[] x = new int[100];
+int toggle = 0;
+
+
+void setup() { 
+  frameRate(30);
+  size(800, 800);
+  stroke(0,247,255);
+  colorMode(HSB);
+  //positions where the balls appear
+  for (int i=0; i < posX1.length; i++) {
+    posX1[i] = random(65,1225); 
+    posY1[i] = random(65, 665);
+    speedX1[i] = random(-7, 7); 
+    speedY1[i] = random(-7, 7);
+  }
+  
+  for (int i=0; i < posXX1.length; i++) {
+    posXX1[i] = random(65,1225); 
+    posYY1[i] = random(65, 665);
+    speedXX1[i] = random(-7, 7); 
+    speedYY1[i] = random(-7, 7);
+  }
+  
+  for (int i=0; i < posX.length; i++) { 
+    posX[i] = posX1[i]; 
+    posY[i] = posY1[i]; 
+    speedX[i] = speedX1[i]; 
+    speedY[i] = speedY1[i];
+    sizeW[i] = random(20, 50); 
+    sizeH[i] = random(20, 100); 
+    colorsH[i] = int(random(0, 255));
+    colorsS[i] = int(random(0, 255));
+    colorsB[i] = int(random(0, 255));
+  }
+  for(int i=0; i < posXX.length; i++){
+    posXX[i] = posXX1[i]; 
+    posYY[i] = posYY1[i]; 
+    speedXX[i] = speedXX1[i]; 
+    speedYY[i] = speedYY1[i];
+    sizeW2[i] = random(20, 50); 
+    sizeH2[i] = random(20, 100); 
+    colorsH[i] = int(random(0, 255));
+    colorsS[i] = int(random(0, 255));
+    colorsB[i] = int(random(0, 255)); 
+  }
+  
+} 
+
+void draw() { 
+ background(0,0,255);
+      
+fish();
+bubbles();
+ 
+ //if(frameCount < 400){
+ // saveFrame("images/exercise_4-#####.png");
+ // }
+ // else{    
+ // exit();
+ // }
+  }
+
+
+void fish (){
+  for (int i = 0; i < posX.length; i++) { 
+    //update all positions 
+    posX[i] += speedX[i]; 
+    posY[i] += speedY[i]; 
+    float r = random(255);
+    float rloop = random(20);
+    //draw all balls 
+    fill(r+150, rloop+10, random(150)); 
+    rect(posX[i], posY[i], sizeW[i], sizeW[i]); 
+    
+    //fill(ran)
+    
+    //check boundaries for all balls 
+
+    if (posY[i] < 40+sizeW[i]/2) { //controls left
+      
+      posY[i] = (width-40)-sizeW[i]/2;
+    } 
+    
+    if(posY[i] > (width-40)-sizeW[i]/2 ){
+      
+    posY[i] = 40+sizeW[i]/2;
+    
+    }
+    
+    if (posY[i] < 40+sizeH[i]/2 || posX[i] > (height-40)-sizeW[i]/2) { 
+      speedY[i] = -speedY[i];
+    } 
+  }
+}
+  
+void bubbles(){
+    
+    for (int i = 0; i < posXX.length; i++) { 
+    //update all positions 
+    posXX[i] += speedXX[i]; 
+    posYY[i] += speedYY[i]; 
+    //draw all balls 
+    fill(colorsH[i],colorsS[i],255,colorsB[i]); 
+    ellipse(posXX[i], posYY[i], sizeW2[i], sizeW2[i]); 
+    //check boundaries for all balls 
+
+    if (posXX[i] < 40+sizeW2[i]/2 || posXX[i] > (width-40)-sizeW2[i]/2 ) { 
+    speedXX[i] = -speedXX[i];
+    }
+    if (posYY[i] < 40+sizeW2[i]/2){
+      
+      posYY[i] = (width-40)-sizeW2[i]/2;
+    }
+    if (posYY[i] > (width-40)-sizeW2[i]/2) {
+      posYY[i] = 40+sizeW2[i]/2;
+    }
+  if (posXX[i] < 40+sizeW2[i]/2){
+      
+      posXX[i] = (width-40)-sizeW2[i]/2;
+    }
+    if (posXX[i] > (width-40)-sizeW2[i]/2) {
+      posXX[i] = 40+sizeW2[i]/2;
+    }  
+    
+  }
+
+}
+  

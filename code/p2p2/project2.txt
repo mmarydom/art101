@@ -1,0 +1,168 @@
+fire myFire;
+bug theBug;
+int count = 2;
+fire[] fire1 = new fire[count];
+fire[] fire2 = new fire[count];
+float yoff = 0.0;
+void setup() {
+size(800, 600); 
+background(0);
+  for (int i = 0; i < fire1.length; i++) {
+    fire1[i] = new fire(color(61, 255, 229),0,500);
+}
+for (int i = 0; i < fire2.length; i++) {
+  fire2[i] = new fire(color(255, 28, 115),0,800);
+}
+    color col = color(122, 119, 84);
+    theBug = new bug(col, width/2, height/2, 1.5, true); 
+}
+
+void draw() {
+background(70, 122, 171);
+for (int i = 0; i < fire1.length; i++) 
+  {
+    fire1[i].display();
+  }
+  for (int i = 0; i < fire2.length; i++) 
+  {
+    fire2[i].display();
+  }
+  
+  
+  
+   if (frameCount <  320) {
+   theBug.update();
+   theBug.fly();
+   theBug.moving(true);
+   // println("First ");
+ } else if ( frameCount <  500 ) {
+   //  println("Second");
+   theBug.changeBehavior( color(255, 28, 115), width/2, height/2 +20, 2.5, false);
+   theBug.fly();
+ }
+ else {
+   theBug.changeBehavior( color(0), width/2, height/2, 2.5, false);
+   theBug.fly();
+ }
+ 
+ 
+  if(frameCount < 600){
+  saveFrame("images/exercise_4-#####.png");
+  }
+  else{    
+  exit();
+  }
+  
+}
+
+class bug {
+ color c;
+ float xpos;
+ float ypos;
+ float sc;
+ 
+  float xspeed;
+  float yspeed;
+ boolean speedChange;
+ boolean onFire;
+ int fireDuration;
+ bug(color col,float tempXpos, float tempYpos, float tempsc, boolean tl){ //boolean onFire){
+   c = col;
+   xpos = tempXpos;
+   ypos = tempYpos;
+   sc = tempsc;
+   speedChange = tl;
+   fireDuration = millis();
+   onFire = false;
+   xspeed = random(-.1,.1);
+   yspeed = random(-.1,.1);
+   //burnt = onFire;  
+}
+  void fly() {
+   noStroke();
+   fill(c);
+   rectMode(CENTER);
+   ellipse(xpos, ypos, (random(15, 20) +10)*sc, random(10, 15)*sc);
+   ellipse(xpos, ypos+6, (random(4, 8) +10)*sc, random(2, 4)*sc);
+   xpos += random(-1, 1);
+   ypos += random(-1, 1);
+   
+  if (speedChange) {
+     moving(true);
+  }
+}
+
+ void changeBehavior(color tempC, float tempXpos, float tempYpos, float tempsc,boolean l){
+   c = tempC;
+   xpos = tempXpos;
+   ypos = tempYpos;
+   sc = tempsc;
+   speedChange = l;
+ }
+ 
+  void update() {
+    
+    xpos = xpos + xspeed;
+    ypos = ypos + yspeed;
+    xpos += random(-1,1);
+    ypos += random(-1,1);
+    
+    if (xpos > width) {
+      xpos = 0;
+    }
+    
+    if (xpos < 0) {
+      xpos = width;
+    }
+    
+    if (ypos > height) {
+      ypos = 0;
+    }
+    
+    if (ypos < 0) {
+      ypos = height;
+    }
+  }
+  
+  
+  void moving(boolean a) {
+    if (a) {
+    xspeed = random(2,3);
+    yspeed = random(-3,3);
+  }
+  }
+ 
+}
+class fire {
+  float inc; //= 50;
+  float zinc; // 0.0;
+  color c;
+  fire(color col, float xoff, float yoff)
+  {
+    c = col;
+    inc = xoff;
+    zinc = yoff;
+    
+}
+ void theFire () {
+  noTint();
+  stroke(255, 28, 115);
+  fill(c);
+  beginShape();
+ inc = zinc;
+  for (float x = 0; x <= width; x += 20) {
+  float y = map(noise(inc, zinc), 0, 1, 100,zinc);
+  vertex(x, y); 
+  inc += 1;
+ }
+ zinc += 0.05; // controls speed
+vertex(width, height);
+vertex(0, height);
+  endShape(CLOSE);
+ }
+ void display()
+ {
+   theFire();
+
+ }
+}

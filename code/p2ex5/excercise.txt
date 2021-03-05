@@ -1,0 +1,196 @@
+// creating an array for holding a list of block objects
+Block[] blocks = new Block[256];
+int bsz = 25;
+float angle;
+int value = 255;
+
+people[] peopleArr = new people[500];
+
+void setup() {
+  size(600, 600);
+  colorMode(HSB);
+  noStroke();
+  color col;
+  for (int i = 0; i < peopleArr.length; i++) {
+    col = color(random(50,100));
+    peopleArr[i] = new people(random(width),height/2); 
+  int gridCount = 0;
+
+  // notice this creates a grid of 256 blocks 16 by 16.
+  for (int t = 0; t < 16; t++ ) {   
+    for (int j = 0; j < 16; j++ ) {
+      blocks[gridCount] = new Block(t*bsz, j*bsz);
+      blocks[gridCount].seed(gridCount);
+      gridCount++;
+      }
+    }
+  }
+}
+
+
+void draw() {
+  float r = random(50);
+  float rloop = random(20);
+  for (int i = 0; i < r; i++) {
+  background(r+150, rloop+10, random(150));
+}
+  pushMatrix(); 
+  translate(100,100);
+
+  for (int i = 0; i < blocks.length; i++ ) {
+    blocks[i].display();
+    blocks[i].update();
+  }
+  popMatrix();
+  
+  for (int i = 0; i < peopleArr.length; i++) {
+  peopleArr[i].update();
+  peopleArr[i].display();
+  }
+  
+    if (mouseY != pmouseY && mouseX != pmouseX) 
+  {
+    angle = atan2(mouseY-pmouseY, mouseX-pmouseX);
+  }
+  
+  
+  pushMatrix(); //pushes transformed matrix onto matrix stack; saves transformation position into stack
+  translate(mouseX, mouseY);
+  rotate(angle + HALF_PI);
+  fill(value);
+  noStroke();
+  ellipse(-30, 0, 13,13);
+  ellipse(-50, 10, 13,13);
+  ellipse(-70, 35, 13,13);
+  ellipse(-90, 20, 13,13);
+  ellipse(-110, 80, 13,13);
+  popMatrix(); //restores to prior position
+  
+  if(frameCount < 500){
+  saveFrame("images/exercise_4-#####.png");
+  }
+  else{    
+  exit();
+  }
+  }
+  
+  void mousePressed() {
+  
+  println("changing");
+  for (int i = 0; i < peopleArr.length; i++) {
+  peopleArr[i].newDirection();
+  }
+  
+}
+  
+
+class Block {
+  float value;
+  float ch;
+  int c;
+  int posX;
+  int posY;
+
+  //Constructor
+  Block(int tposX, int tposY) {   
+    //println("new Block is made " );
+    posX = tposX;
+    posY = tposY;
+
+  }
+
+  void seed(int s ) {
+    value = s;
+    c = color(value, 255, 255);
+    ch = random(3);
+  }
+
+  void display() {
+    noStroke();
+    fill(c);
+    rect(posX, posY, 20, 20);
+  }
+
+  void update() {
+   // println(ch + " " + value);
+    if ((value < 0) || (value > 254)) {
+      ch = -ch;
+    }
+    value += ch; 
+    c = color(value, 255, 255);
+  }
+}
+
+
+// The class defination is the template in which we can make different 
+// copies or many objects.
+class people { 
+  // class variables that are unique to each instance of a class.
+  float value;
+  int c;
+  float ch;
+  float xpos;
+  float ypos;
+  float xspeed;
+  float yspeed;
+  
+  
+  // The Constructor is like setup and helps defines the details of the object
+  people(float tempXpos, float tempYpos) { 
+    // tempC, tempXpos, etc. are the argument vars that pass data to the class vars
+    c = color(value, 255, 255);
+    ch = random(3);
+    xpos = tempXpos;
+    ypos = tempYpos;
+    
+    xspeed = random(-.1,.1);
+    yspeed = random(-.1,.1);
+    
+   
+  }
+  
+  // functions inside of Classes are called methods
+  // This one is designed to go in the draw loop and called repeatly
+  void display() {
+    //stroke(0);
+    stroke(0);
+    c = color(value, 255, 255);
+    ch = random(3);
+    rectMode(CENTER);
+    rect(xpos,ypos+3,random(2,2) +10,random(10,5));
+    ellipse(xpos,ypos,random(4,10) +10,random(5,10));
+  }
+  
+  
+  void update() {
+    
+    xpos = xpos + xspeed;
+    ypos = ypos + yspeed;
+    xpos += random(-1,1);
+    ypos += random(-1,1);
+    
+    if (xpos > width) {
+      xpos = 0;
+    }
+    
+    if (xpos < 0) {
+      xpos = width;
+    }
+    
+    if (ypos > height) {
+      ypos = 0;
+    }
+    
+    if (ypos < 0) {
+      ypos = height;
+    }
+  }
+  
+  
+  void newDirection() {
+    xspeed = random(-3,3);
+    yspeed = random(-3,3);
+  }  
+}
+
+
